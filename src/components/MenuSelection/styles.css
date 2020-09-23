@@ -1,0 +1,11 @@
+.select-dog Select {
+    font-size: 15px;
+    border: '1px solid #ced4da',
+}
+
+.select-dog {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 5px;
+}
