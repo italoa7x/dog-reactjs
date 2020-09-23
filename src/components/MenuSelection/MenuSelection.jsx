@@ -20,7 +20,9 @@ const MenuSelection = () => {
   function handleDogSelect(event) {
     event.preventDefault();
     setDog(event.target.value);
-    searchDog(dog)
+    if(event.target.value !== ""){
+      searchDog(event.target.value)
+    }
   }
 
   const BootstrapInput = withStyles((theme) => ({
@@ -73,7 +75,7 @@ const MenuSelection = () => {
         <NativeSelect
           variant="outlined"
           value={dog}
-          onChange={handleDogSelect}
+          onChange={(e) => handleDogSelect(e)}
           input={<BootstrapInput />}
         >
           {
