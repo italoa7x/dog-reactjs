@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
 .header {
     display: flex;
     flex-direction: column;
@@ -13,11 +15,16 @@
     font-size: 70px;
     width: "500";
     color: #FFFF;
-    font-family: Georgia, 'Times New Roman', Times, serif
+    font-family: 'Pacifico', cursive;
+    margin-bottom: 15px;
 }
 
-.header subtitle1 {
-    color: #FFFF
+.header p {
+    color: #FFFF;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 300px;
+    margin-left: 250px;
+    margin-top: -20px;
 }
 
 .header img {

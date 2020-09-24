@@ -10,9 +10,7 @@ const Header = () => {
   return (
     <div className="header">
       <Typography variant="h2">Amigo cão  <img src = {pet} alt="Amigo cão"></img> </Typography>
-        <Typography variant="subtitle1" >
-          Um mundo repleto de dogs. Procure o seu favorito!
-        </Typography>
+        <p>Um mundo repleto de dogs. Procure o seu favorito!</p>
         <div className="menu-selection">
           <MenuSelection />
         </div>

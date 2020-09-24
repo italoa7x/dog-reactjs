@@ -70,7 +70,7 @@ const MenuSelection = () => {
 
   return (
     <div className="select-dog">
-      <Typography variant="subtitle1">Selecione uma raça</Typography>
+      <Typography variant="h5">Selecione uma raça</Typography>
       <FormControl className={classes.margin}>
         <NativeSelect
           variant="outlined"

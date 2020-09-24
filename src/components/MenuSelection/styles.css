@@ -1,6 +1,5 @@
 .select-dog Select {
     font-size: 15px;
-    border: '1px solid #ced4da',
 }
 
 .select-dog {
@@ -8,4 +7,9 @@
     align-items: center;
     flex-direction: column;
     margin-top: 5px;
+}
+
+.select-dog h5 {
+    color: #FFFF;
+    font-size: 15px;
 }
