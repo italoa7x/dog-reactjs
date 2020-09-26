@@ -1,0 +1,4 @@
+.my-informations {
+    display: flex;
+    flex-direction: row;
+}

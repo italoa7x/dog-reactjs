@@ -5,7 +5,6 @@ const listDogs = [
   "Airedale",
   "Akita",
   "Appenzeller",
-  "Sheperd Australian",
   "Basenji",
   "Beagle",
   "Bluetick",
@@ -14,14 +13,11 @@ const listDogs = [
   "Boxer",
   "Brabancon",
   "Briard",
-  "Norwegian Buhund",
-  "Boston Bulldog",
-  "English Bulldog",
-  "French Bulldog",
-  "Staffordshire Bullterrier",
   "Cairn",
-  "Australian Cattledog",
   "Chihuahua",
   "Chow",
+  "Shiba",
+  "Shihtzu",
+  "Vizsla"
 ];
 export default listDogs;

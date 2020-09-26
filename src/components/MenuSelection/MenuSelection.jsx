@@ -19,9 +19,10 @@ const MenuSelection = () => {
 
   function handleDogSelect(event) {
     event.preventDefault();
-    setDog(event.target.value);
     if(event.target.value !== ""){
-      searchDog(event.target.value)
+      setDog(event.target.value);
+      const dogs = searchDog(event.target.value);
+      console.log(dogs); 
     }
   }
 
