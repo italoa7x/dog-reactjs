@@ -1,14 +1,11 @@
 import api from "./api";
 import replaceDogName from "./replaceDogName";
 
-export default function searchDog(dog) {
+export default async function searchDog(dog) {
     const dogName = replaceDogName(dog);
     const URL = `${dogName}/images/random/10`;
-    var dogs = [];
-    api.get(URL).then((photo) => {
-        photo.data.message.forEach(dog => {
-            dogs.push(dog);
-        });
-    })
-    return dogs;
+    const { data } = await api.get(URL);
+    const dogs = data.message;
+
+    localStorage.setItem("dogs", JSON.stringify(dogs));
 }
