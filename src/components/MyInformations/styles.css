@@ -7,12 +7,12 @@ a {
 .icon {
     vertical-align: middle;
     margin-left: 10px;
-    margin-bottom: 8px;
+    bottom: 0;
 }
 
 .my-informatios {
-    position: fixed;
-    bottom: 0;
+    top: 0;
+    position: absolute;
     display: flex;
     justify-content: flex-start;
     vertical-align: middle;

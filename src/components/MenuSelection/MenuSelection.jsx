@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+
+import { connect } from "react-redux";
+import searchDogAction from "../../storage/actions/searchDogAction";
 
 import Typography from "@material-ui/core/Typography";
 import FormControl from "@material-ui/core/FormControl";
@@ -9,6 +12,7 @@ import { withStyles } from "@material-ui/core/styles";
 
 import listDogs from "../../utils/listDogs";
 import searchDog from "../../service/searchDog";
+import CardList from "../CardList/CardList";
 
 
 import "./styles.css";
@@ -16,13 +20,10 @@ import "./styles.css";
 const MenuSelection = () => {
   const [dog, setDog] = useState("");
 
-
   function handleDogSelect(event) {
     event.preventDefault();
-    if(event.target.value !== ""){
-      setDog(event.target.value);
+    if (event.target.value !== "") {
       searchDog(event.target.value);
-
     }
   }
 
@@ -79,18 +80,20 @@ const MenuSelection = () => {
           onChange={(e) => handleDogSelect(e)}
           input={<BootstrapInput />}
         >
-          {
-          listDogs.map((d) => (
-              <option value={d} key={d}>
-                  {d}
-              </option>
-          ))
-          }
-          
+          {listDogs.map((d) => (
+            <option value={d} key={d}>
+              {d}
+            </option>
+          ))}
         </NativeSelect>
       </FormControl>
     </div>
   );
 };
 
-export default MenuSelection;
+const mappDispatch = (disptach) => {
+  return {
+    searchDog: (term) => dispatch( searchDogAction(term) )
+  }
+}
+export default connect(null, mappDispatch)(MenuSelection);
