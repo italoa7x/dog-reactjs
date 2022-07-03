@@ -13,3 +13,17 @@
     color: #FFFF;
     font-size: 15px;
 }
+
+image {
+    width: 15px;
+    height: 15px;
+
+}
+
+container-image {
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    justify-content: space-around;
+    background-color: tomato;
+}

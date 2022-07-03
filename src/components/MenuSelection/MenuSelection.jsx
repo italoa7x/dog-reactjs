@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
-import { connect } from "react-redux";
-import searchDogAction from "../../storage/actions/searchDogAction";
 
 import Typography from "@material-ui/core/Typography";
 import FormControl from "@material-ui/core/FormControl";
@@ -12,20 +10,34 @@ import { withStyles } from "@material-ui/core/styles";
 
 import listDogs from "../../utils/listDogs";
 import searchDog from "../../service/searchDog";
-import CardList from "../CardList/CardList";
-
-
 import "./styles.css";
+import { useMemo } from "react";
+import replaceDog from "../../service/replaceDogName";
 
 const MenuSelection = () => {
   const [dog, setDog] = useState("");
+  const [dogType, setDogType] = useState('');
+  const [dogsValues, setDogsValues] = useState([]);
 
   function handleDogSelect(event) {
     event.preventDefault();
+    console.log(event.target.value)
     if (event.target.value !== "") {
-      searchDog(event.target.value);
+      setDog(event.target.value)
+      setDogType(event.target.value);
     }
   }
+
+  useMemo(async () => {
+
+    const dogRpl = replaceDog(dogType)
+
+    if (dogRpl) {
+      const dogs = await searchDog(dogType);
+      setDogsValues(dogs)
+    }
+
+  }, [dogType])
 
   const BootstrapInput = withStyles((theme) => ({
     root: {
@@ -71,29 +83,44 @@ const MenuSelection = () => {
   const classes = useStyles();
 
   return (
-    <div className="select-dog">
-      <Typography variant="h5">Selecione uma raça</Typography>
-      <FormControl className={classes.margin}>
-        <NativeSelect
-          variant="outlined"
-          value={dog}
-          onChange={(e) => handleDogSelect(e)}
-          input={<BootstrapInput />}
-        >
-          {listDogs.map((d) => (
-            <option value={d} key={d}>
-              {d}
-            </option>
-          ))}
-        </NativeSelect>
-      </FormControl>
-    </div>
+    <div>
+      <div className="select-dog">
+        <Typography variant="h5">Selecione uma raça</Typography>
+        <FormControl className={classes.margin}>
+          <NativeSelect
+            variant="outlined"
+            value={dog}
+            onChange={(e) => handleDogSelect(e)}
+            input={<BootstrapInput />}
+          >
+            {listDogs.map((value, index) => (
+              <option value={value} key={index}>
+                {value}
+              </option>
+
+
+
+            ))}
+          </NativeSelect>
+        </FormControl>
+      </div>
+
+
+
+
+
+      <div className='container-image'>
+
+        {
+          dogsValues.map((value, index) => (
+            <img className='image' src={value}
+              key={index} alt={'foto de algum cachorro aleatorio'} />
+
+          ))
+        }
+      </div>
+    </div >
   );
 };
 
-const mappDispatch = (disptach) => {
-  return {
-    searchDog: (term) => dispatch( searchDogAction(term) )
-  }
-}
-export default connect(null, mappDispatch)(MenuSelection);
+export default MenuSelection
